@@ -24,17 +24,41 @@ async function fetchParkingPublics() {
 
     //let element = document.getElementById("zoneParkingsPublics")
     let list = document.getElementById("parkingsPublics")
+    let titre1 = document.getElementById("Titre")
+    titre1.style.visibility = "visible";
+
+    let titre2 = document.getElementById("title")
+    titre2.style.visibility = "visible";
+
+
 
 
     const parkingsTab = parkingsPublics.records
     console.log(parkingsTab)
+    let Tab = 1
     for (const parking of parkingsTab) {
         console.log(parking.fields.grp_nom)
-        list.innerHTML += '<li>' + parking.fields.grp_nom + '<br>' + parking.fields.disponibilite + " places restantes" + '</li>'
+        list.innerHTML += '<div class = div'+ Tab +'>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '</div>'
+        Tab = Tab + 1
+        
     }
+}
 
+async function fetchParkingRelais() {
+    let response = await fetch('https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-relais-nantes-metropole-disponibilites&q=&facet=grp_nom&facet=grp_statut')
+    let parkingsRelais = await response.json()
+    let list = document.getElementById("parkingsRelais")
 
-
+    const parkingsTab = parkingsRelais.records
+    console.log(parkingsTab)
+    let Tab = 1
+    for (const parking of parkingsTab) {
+        console.log(parking.fields.grp_nom)
+        list.innerHTML += '<div class = div'+ Tab +'>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '</div>'
+        Tab = Tab + 1
+        
+    }
+}
 
 
     // for (const iterator of parkingName) {
@@ -64,4 +88,3 @@ async function fetchParkingPublics() {
     // status.forEach((status, index) => {
     //     list.innerHTML += '<li>' + status.name + '</li>'
     // })
-}

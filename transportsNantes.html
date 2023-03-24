@@ -5,18 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://cssgrid-generator.netlify.app/"> -->
     <script src="transportsNantes.js"></script>
     <title>Document</title>
 </head>
 
-<body>
-    <input type="button" value="Quelles sont les dispo dans les parkings ?" onclick="fetchParkingPublics()">
-    <p id="zoneParkingsPublics">
-        Voici les disponibilités dans les parkings publics :
-    </p>
 
-    <ul id="parkingsPublics">
-    </ul>
+<body>
+    
+    <h1>TROUVER VOTRE PLACE DE PARKING</h1>
+    <h2 id ="Titre"> La liste des parkings publics disponibles : </h2> 
+    
+    <div class="container">
+    <input type="button" value="Trouvez les parkings disponibles" onclick= "fetchParkingPublics(); fetchParkingRelais()">
+    <div class="parent">
+    </div>
+    <!-- <p id="zoneParkingsPublics"> -->
+        <!-- Voici les disponibilités dans les parkings publics : -->
+    <!-- </p> -->
+</div>
+
+<div class="parking">
+
+    <div id="parkingsPublics" class="parking" ></div>
+    <h2 id = "title"> La liste des parkings relais disponibles : </h2>
+    <div id="parkingsRelais" class="parking"></div>  
+
+</div>
+
+<!-- <h2> La liste des parkingRelais disponibles </h2> -->
 
 </body>
 
