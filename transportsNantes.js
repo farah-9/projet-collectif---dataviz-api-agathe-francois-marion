@@ -129,7 +129,6 @@ async function fetchRoads() {
     const data = await response.json()
 
     for (const road of data.records) {
-        const [[longitude, latitude]] = road.fields.geo_shape.coordinates
         let latlngs = []
         const roadColor = road.fields.couleur_tp
         let mapColor = "0"
