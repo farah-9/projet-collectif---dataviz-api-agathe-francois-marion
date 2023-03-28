@@ -129,7 +129,8 @@ async function fetchRoads() {
     const data = await response.json()
 
     for (const road of data.records) {
-        const [[longitude1, latitude1], [longitude2, latitude2]] = road.fields.geo_shape.coordinates
+        const [[longitude, latitude]] = road.fields.geo_shape.coordinates
+        let latlngs = []
         const roadColor = road.fields.couleur_tp
         let mapColor = "0"
         const roadName = road.fields.cha_lib
@@ -137,10 +138,9 @@ async function fetchRoads() {
         const avrgSpeed = road.fields.mf1_vit
         const numberOfCars = road.fields.mf1_debit
 
-        const latlngs = [
-            [latitude1, longitude1],
-            [latitude2, longitude2],
-        ]
+        for (const roadCoordinates of road.fields.geo_shape.coordinates) {    
+            latlngs.push(roadCoordinates.reverse())
+        }
 
         if (roadColor === "3") {
             mapColor = "green"
@@ -151,13 +151,13 @@ async function fetchRoads() {
         } else if (roadColor === "6") {
             mapColor = "red"
         }
-        console.log(mapColor)
 
-        polyline = L.polyline(latlngs, { color: mapColor, weight: 2 }).addTo(map)
-
+        let polyline = L.polyline(latlngs, { color: mapColor, weight: 2 }).addTo(map)
+    
         polyline.bindPopup("<b>Nom du tronçon :</b><br/>" + roadName + "<br/><br/><b>Longueur du tronçon (en m) :</b><br/>" + roadLength
         + "<br/><br/><b>Vitesse moyenne (en km/h) :</b></br/>" + avrgSpeed + "<br/><br/><b>Débit de voitures :</b></br/>" + numberOfCars)
     }
+    
 }
 
 fetchRoads()
