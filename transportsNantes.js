@@ -118,9 +118,6 @@ legend.onAdd = function (map) {
     div.innerHTML += '<i style="background: #FFFF00"></i><span>Dense</span><br>';
     div.innerHTML += '<i style="background: #FF8C00"></i><span>Saturé</span><br>';
     div.innerHTML += '<i style="background: #FF0000"></i><span>Bloqué</span><br>';
-
-
-
     return div;
 };
 
@@ -159,8 +156,7 @@ async function fetchRoads() {
         polyline = L.polyline(latlngs, { color: mapColor, weight: 2 }).addTo(map)
 
         polyline.bindPopup("<b>Nom du tronçon :</b><br/>" + roadName + "<br/><br/><b>Longueur du tronçon (en m) :</b><br/>" + roadLength
-            + "<br/><br/><b>Vitesse moyenne (en km/h) :</b></br/>" + avrgSpeed + "<br/><br/><b>Débit de voitures :</b></br/>" + numberOfCars)
-        polyline.bindPopup
+        + "<br/><br/><b>Vitesse moyenne (en km/h) :</b></br/>" + avrgSpeed + "<br/><br/><b>Débit de voitures :</b></br/>" + numberOfCars)
     }
 }
 
