@@ -16,6 +16,23 @@
 //     fetchParkingPublics()
 // }
 
+async function fetchParkingRelais() {
+    let response = await fetch('https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-relais-nantes-metropole-disponibilites&q=&facet=grp_nom&facet=grp_statut')
+    let parkingsRelais = await response.json()
+    let list = document.getElementById("parkingsRelais")
+
+    const parkingsTab = parkingsRelais.records
+    console.log(parkingsTab)
+    let Tab = 1
+    for (const parking of parkingsTab) {
+        console.log(parking.fields.grp_nom)
+        list.innerHTML += '<div class = div'+ Tab +'>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '</div>'
+        Tab = Tab + 1
+        
+    }
+    setTimeout(fetchParkingRelais,100000)
+}
+
 async function fetchParkingPublics() {
     let response = await fetch('https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&lang=fr&rows=31&facet=grp_nom&facet=grp_statut&timezone=Europe%2FParis')
     let parkingsPublics = await response.json()
@@ -42,23 +59,10 @@ async function fetchParkingPublics() {
         Tab = Tab + 1
         
     }
+    setTimeout(fetchParkingPublics,100000)
 }
 
-async function fetchParkingRelais() {
-    let response = await fetch('https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-relais-nantes-metropole-disponibilites&q=&facet=grp_nom&facet=grp_statut')
-    let parkingsRelais = await response.json()
-    let list = document.getElementById("parkingsRelais")
 
-    const parkingsTab = parkingsRelais.records
-    console.log(parkingsTab)
-    let Tab = 1
-    for (const parking of parkingsTab) {
-        console.log(parking.fields.grp_nom)
-        list.innerHTML += '<div class = div'+ Tab +'>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '</div>'
-        Tab = Tab + 1
-        
-    }
-}
 
 
     // for (const iterator of parkingName) {

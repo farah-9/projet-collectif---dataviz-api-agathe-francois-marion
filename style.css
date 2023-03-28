@@ -1,13 +1,31 @@
 body{
     font-family: 'Open Sans', sans-serif;
 
-    background-color: beige;    
+    background-color: beige;   
+    color:rgb(8, 7, 7);
+/* background-image:url(https://i.pinimg.com/564x/73/5d/39/735d3946c29ca7a6b05e7cd891578fe9.jpg);  */
+/* background-size: cover; */
+
 }
+/* .sous{
+    display: none;
+    box-shadow: 0px 1px 2px #ccc;
+    background-color: white;
+}
+nav > ul li :hover .sous{
+    display: block;
+} */
+
 h1{
     font-family: 'Arimo', sans-serif;
-    background: gray;
-    padding: 10px;
-    position: center;
+    /* background: gray; */
+    padding:20px 150px 250px 5px;
+    color: rgb(254, 255, 253);
+    background-image: url(https://www.northumbria.ac.uk/-/media/images/banners/about-us/campus-services/parking-banner.jpg?modified=20180312135122);
+
+    background-size: 110%;
+margin: -10px;
+
 }
 h2{
     visibility: hidden;
@@ -17,7 +35,7 @@ h2{
 
 .container{
     position:absolute;
-    padding: 21px;
+    padding: 8px;
     left: 70%;
     top: 2.5%;
     
@@ -41,8 +59,8 @@ input{
 .parking{
     display: grid;
     /* grid-template-columns: repeat(6, 1fr); */
-    grid-template-rows: repeat(6, 0fr);
-    grid-column-gap: 50px;
+    grid-template-rows: repeat(2, 0fr);
+    grid-column-gap: 70px;
     grid-row-gap: 50px;
 
 

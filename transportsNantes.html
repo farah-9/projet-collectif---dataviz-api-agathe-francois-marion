@@ -19,10 +19,14 @@
 <body>
     
     <h1>TROUVER VOTRE PLACE DE PARKING</h1>
-    <h2 id ="Titre"> La liste des parkings publics disponibles : </h2> 
-    
+    <h2 id = "title"> La liste des parkings relais disponibles : </h2>
+    <!-- <li class="deroulant"><a href="#">Parkings Relais &ensp;</a>
+        <ul class="sous"></ul>
+    <li class="deroulant"><a href="#">Parkings Publics &ensp;</a>
+        <ul class="sous">
+         -->
     <div class="container">
-    <input type="button" value="Trouvez les parkings disponibles" onclick= "fetchParkingPublics(); fetchParkingRelais()">
+    <input type="button" value="Trouvez les parkings disponibles" onclick= "fetchParkingRelais();fetchParkingPublics()">
     <div class="parent">
     </div>
     <!-- <p id="zoneParkingsPublics"> -->
@@ -31,10 +35,10 @@
 </div>
 
 <div class="parking">
-
-    <div id="parkingsPublics" class="parking" ></div>
-    <h2 id = "title"> La liste des parkings relais disponibles : </h2>
     <div id="parkingsRelais" class="parking"></div>  
+    <h2 id ="Titre"> La liste des parkings publics disponibles : </h2> 
+    <div id="parkingsPublics" class="parking" ></div>
+    
 
 </div>
 
