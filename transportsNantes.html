@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Stylesheet de leaflet (carte) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <!-- <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cssgrid-generator.netlify.app/"> -->
-    <script src="transportsNantes.js"></script>
-    <title>Document</title>
+    
+    <title>La voiture à Nantes</title>
 </head>
 
 
@@ -43,6 +46,16 @@
 </div>
 
 <!-- <h2> La liste des parkingRelais disponibles </h2> -->
+
+<!-- ajout de leaflet.js + emplacement de la carte -->
+
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+<p>Quelle magnifique carte et mise en page !</p>
+<div id="map"></div>
+<!-- Ne pas remonter le lien vers le script JS pour ne pas perturber l'affichage de la carte. -->
+<script src="transportsNantes.js"></script>
 
 </body>
 

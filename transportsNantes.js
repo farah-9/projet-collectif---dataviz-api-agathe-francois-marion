@@ -92,3 +92,76 @@ async function fetchParkingPublics() {
     // status.forEach((status, index) => {
     //     list.innerHTML += '<li>' + status.name + '</li>'
     // })
+
+
+
+// JS de la carte
+
+const map = L.map('map').setView([47.212913, -1.553155], 12)
+
+// Fond de carte
+const jawg_sunny_tile = L.tileLayer('https://{s}.tile.jawg.io/jawg-sunny/{z}/{x}/{y}{r}.png?access-token={accessToken}', {
+    attribution: '<a href="http://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    minZoom: 0,
+    maxZoom: 22,
+    subdomains: 'abcd',
+    accessToken: 'uesZRFXoS2UvhGObjjQrTqMnp1CcgqSfpgwNseDZQvWhPMyeNVcxhukBJSivVk9V'
+}).addTo(map)
+
+const legend = L.control({ position: "bottomleft" });
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create("div", "legend");
+    div.innerHTML += "<h4>Fluidité des axes routiers</h4>";
+    div.innerHTML += '<i style="background: #FFFFFF"></i><span>Indéterminé</span><br>';
+    div.innerHTML += '<i style="background: #008000"></i><span>Fluide</span><br>';
+    div.innerHTML += '<i style="background: #FFFF00"></i><span>Dense</span><br>';
+    div.innerHTML += '<i style="background: #FF8C00"></i><span>Saturé</span><br>';
+    div.innerHTML += '<i style="background: #FF0000"></i><span>Bloqué</span><br>';
+
+
+
+    return div;
+};
+
+legend.addTo(map);
+
+// Fetch API + affichage des données sur la carte
+async function fetchRoads() {
+    const response = await fetch("https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_fluidite-axes-routiers-nantes-metropole&q=&rows=842&facet=couleur_tp")
+    const data = await response.json()
+
+    for (const road of data.records) {
+        const [[longitude1, latitude1], [longitude2, latitude2]] = road.fields.geo_shape.coordinates
+        const roadColor = road.fields.couleur_tp
+        let mapColor = "0"
+        const roadName = road.fields.cha_lib
+        const roadLength = road.fields.cha_long
+        const avrgSpeed = road.fields.mf1_vit
+        const numberOfCars = road.fields.mf1_debit
+
+        const latlngs = [
+            [latitude1, longitude1],
+            [latitude2, longitude2],
+        ]
+
+        if (roadColor === "3") {
+            mapColor = "green"
+        } else if (roadColor === "4") {
+            mapColor = "yellow"
+        } else if (roadColor === "5") {
+            mapColor = "darkorange"
+        } else if (roadColor === "6") {
+            mapColor = "red"
+        }
+        console.log(mapColor)
+
+        polyline = L.polyline(latlngs, { color: mapColor, weight: 2 }).addTo(map)
+
+        polyline.bindPopup("<b>Nom du tronçon :</b><br/>" + roadName + "<br/><br/><b>Longueur du tronçon (en m) :</b><br/>" + roadLength
+            + "<br/><br/><b>Vitesse moyenne (en km/h) :</b></br/>" + avrgSpeed + "<br/><br/><b>Débit de voitures :</b></br/>" + numberOfCars)
+        polyline.bindPopup
+    }
+}
+
+fetchRoads()
