@@ -67,11 +67,16 @@ async function fetchParkingPublics() {
         //calcul du pourcentage d'occupation pour la progress bar
         let dispo = parking.fields.disponibilite
         let total = parking.fields.grp_exploitation
+
+        if (dispo < 0) {
+            dispo = 0
+        }
+
         let diff = total - dispo
         let pourcentageRestant = Math.floor((diff / total) * 100)
         console.log("coucou " + pourcentageRestant + "% libre")
 
-        list.innerHTML += '<div class = div' + Tab + '>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '<br>' + `<div class="progressBar" style = "background-color: rgb(67, 67, 67); border-radius: 13px; height: 5px; width: 100px; padding: 3px"><div style="width: ${pourcentageRestant}%; background-color: rgb(107, 161, 211); height: 5px; border-radius: 10px" ;></div></div>` + '</div>'
+        list.innerHTML += '<div class = div' + Tab + '>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + dispo + " places restantes" + '<br>' + `<div class="progressBar" style = "background-color: rgb(67, 67, 67); border-radius: 13px; height: 5px; width: 100px; padding: 3px"><div style="width: ${pourcentageRestant}%; background-color: rgb(107, 161, 211); height: 5px; border-radius: 10px" ;></div></div>` + '</div>'
         Tab = Tab + 1
 
     }

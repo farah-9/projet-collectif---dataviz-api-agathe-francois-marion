@@ -29,6 +29,10 @@
     <li class="deroulant"><a href="#">Parkings Publics &ensp;</a>
         <ul class="sous">
         -->
+
+    <div id="time"></div>
+    <h2 id="mapTitle">Carte du traffic routier à Nantes</h2>
+    <div id="map"></div>
     <div class="progressbar">
         <div></div>
     </div>
@@ -44,9 +48,9 @@
     </div>
 
     <div class="parking">
-        <h2 id="title"> Trouvez une place dans un parking relai : </h2>
+        <h2 class="hide" id="title"> Trouvez une place dans un parking relais : </h2>
         <div id="parkingsRelais" class="parking"></div>
-        <h2 id="Titre"> Trouvez une place dans un parking public : </h2>
+        <h2 class="hide" id="Titre"> Trouvez une place dans un parking public : </h2>
         <div id="parkingsPublics" class="parking"></div>
 
 
@@ -59,10 +63,7 @@
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-    <p>Quelle magnifique carte et mise en page !</p>
-    <div id="map"></div>
     <!-- Ne pas remonter le lien vers le script JS pour ne pas perturber l'affichage de la carte. -->
-    <div id="time"></div>
     <script src="transportsNantes.js"></script>
 
 </body>
