@@ -12,52 +12,58 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <!-- <link href="https://fonts.googleapis.com/css2?family=Arimo&display=swap" rel="stylesheet"> -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://cssgrid-generator.netlify.app/"> -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    
-    <title>La voiture à Nantes</title>
+
+    <title>En voiture à Nantes</title>
 </head>
 
 
 <body>
-    
+
     <h1>TROUVEZ VOTRE PLACE DE PARKING</h1>
-    <h2 id = "title"> La liste des parkings relais disponibles : </h2>
+    <h2 id="title"> La liste des parkings relais disponibles : </h2>
     <!-- <li class="deroulant"><a href="#">Parkings Relais &ensp;</a>
         <ul class="sous"></ul>
     <li class="deroulant"><a href="#">Parkings Publics &ensp;</a>
         <ul class="sous">
         -->
-    <div class="container">
-    <input type="button" value="Trouvez les parkings disponibles" onclick= "fetchParkingRelais();fetchParkingPublics()">
-    <div class="parent">
+    <div class="progressbar">
+        <div></div>
     </div>
-    <!-- <p id="zoneParkingsPublics"> -->
+
+    <div class="container">
+        <input type="button" value="Trouvez les parkings disponibles"
+            onclick="fetchParkingRelais();fetchParkingPublics()">
+        <div class="parent">
+        </div>
+        <!-- <p id="zoneParkingsPublics"> -->
         <!-- Voici les disponibilités dans les parkings publics : -->
-    <!-- </p> -->
-</div>
+        <!-- </p> -->
+    </div>
 
-<div class="parking">
-    <div id="parkingsRelais" class="parking"></div>  
-    <h2 id ="Titre"> La liste des parkings publics disponibles : </h2> 
-    <div id="parkingsPublics" class="parking" ></div>
-    
+    <div class="parking">
+        <div id="parkingsRelais" class="parking"></div>
+        <h2 id="Titre"> La liste des parkings publics disponibles : </h2>
+        <div id="parkingsPublics" class="parking"></div>
 
-</div>
 
-<!-- <h2> La liste des parkingRelais disponibles </h2> -->
+    </div>
 
-<!-- ajout de leaflet.js + emplacement de la carte -->
+    <!-- <h2> La liste des parkingRelais disponibles </h2> -->
 
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    <!-- ajout de leaflet.js + emplacement de la carte -->
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
         integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-<p>Quelle magnifique carte et mise en page !</p>
-<div id="map"></div>
-<!-- Ne pas remonter le lien vers le script JS pour ne pas perturber l'affichage de la carte. -->
-<div id="time"></div>
-<script src="transportsNantes.js"></script>
+    <p>Quelle magnifique carte et mise en page !</p>
+    <div id="map"></div>
+    <!-- Ne pas remonter le lien vers le script JS pour ne pas perturber l'affichage de la carte. -->
+    <div id="time"></div>
+    <script src="transportsNantes.js"></script>
 
 </body>
 

@@ -15,7 +15,7 @@
 // function buttonClickGet() {
 //     fetchParkingPublics()
 // }
-
+//Appel API parkings relais - DATA NANTES METRO
 async function fetchParkingRelais() {
     let response = await fetch('https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parcs-relais-nantes-metropole-disponibilites&q=&facet=grp_nom&facet=grp_statut')
     let parkingsRelais = await response.json()
@@ -26,13 +26,23 @@ async function fetchParkingRelais() {
     let Tab = 1
     for (const parking of parkingsTab) {
         console.log(parking.fields.grp_nom)
-        list.innerHTML += '<div class = div'+ Tab +'>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '</div>'
+        //calcul du pourcentage d'occupation pour la progress bar
+        let dispo = parking.fields.disponibilite
+        let total = parking.fields.grp_exploitation
+        let diff = total - dispo
+        let pourcentageRestant = Math.floor((diff / total) * 100)
+        console.log("coucou " + pourcentageRestant + "% libre")
+
+        list.innerHTML += '<div class = div' + Tab + '>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '<br>' + `<div class="progressBar" style = "background-color: rgb(67, 67, 67); border-radius: 13px; height: 5px; width: 100px; padding: 3px"><div style="width: ${pourcentageRestant}%; background-color: rgb(107, 161, 211); height: 5px; border-radius: 10px" ;></div></div>` + '</div>'
+
+
         Tab = Tab + 1
-        
+
     }
-    setTimeout(fetchParkingRelais,100000)
+    setTimeout(fetchParkingRelais, 100000)
 }
 
+//Appel API parkings publics - DATA NANTES METRO
 async function fetchParkingPublics() {
     let response = await fetch('https://data.nantesmetropole.fr/api/records/1.0/search/?dataset=244400404_parkings-publics-nantes-disponibilites&q=&lang=fr&rows=31&facet=grp_nom&facet=grp_statut&timezone=Europe%2FParis')
     let parkingsPublics = await response.json()
@@ -55,43 +65,50 @@ async function fetchParkingPublics() {
     let Tab = 1
     for (const parking of parkingsTab) {
         console.log(parking.fields.grp_nom)
-        list.innerHTML += '<div class = div'+ Tab +'>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '</div>'
+        //calcul du pourcentage d'occupation pour la progress bar
+        let dispo = parking.fields.disponibilite
+        let total = parking.fields.grp_exploitation
+        let diff = total - dispo
+        let pourcentageRestant = Math.floor((diff / total) * 100)
+        console.log("coucou " + pourcentageRestant + "% libre")
+
+        list.innerHTML += '<div class = div' + Tab + '>' + " " + " " + parking.fields.grp_nom + " " + '<br>' + " " + parking.fields.disponibilite + " places restantes" + '<br>' + `<div class="progressBar" style = "background-color: rgb(67, 67, 67); border-radius: 13px; height: 5px; width: 100px; padding: 3px"><div style="width: ${pourcentageRestant}%; background-color: rgb(107, 161, 211); height: 5px; border-radius: 10px" ;></div></div>` + '</div>'
         Tab = Tab + 1
-        
+
     }
-    setTimeout(fetchParkingPublics,100000)
+    setTimeout(fetchParkingPublics, 100000)
 }
 
 
 
 
-    // for (const iterator of parkingName) {
-    //     console.log(iteratoir)
-    // }
+// for (const iterator of parkingName) {
+//     console.log(iteratoir)
+// }
 
 
 
-    // let element = document.getElementById("zoneParkingsPublics")
-    // let list = document.getElementById("list")
+// let element = document.getElementById("zoneParkingsPublics")
+// let list = document.getElementById("list")
 
-    // const parkingList = parkingsPublics.facet_groups[0].facets
+// const parkingList = parkingsPublics.facet_groups[0].facets
 
-    // parkingList.forEach((parking, index) => {
-    //     list.innerHTML += '<li>' + parking.name + '</li>'
-    // })
+// parkingList.forEach((parking, index) => {
+//     list.innerHTML += '<li>' + parking.name + '</li>'
+// })
 
-    // const dispos = parkingsPublics.facet_groups[2].facets
-    // console.log("hello", dispos)
+// const dispos = parkingsPublics.facet_groups[2].facets
+// console.log("hello", dispos)
 
-    // dispos.forEach((disponibilite, index) => {
-    //     list.innerHTML += '<li>' + disponibilite.name + '</li>'
-    // })
+// dispos.forEach((disponibilite, index) => {
+//     list.innerHTML += '<li>' + disponibilite.name + '</li>'
+// })
 
-    // const status = parkingsPublics.facet_groups[1].facets
+// const status = parkingsPublics.facet_groups[1].facets
 
-    // status.forEach((status, index) => {
-    //     list.innerHTML += '<li>' + status.name + '</li>'
-    // })
+// status.forEach((status, index) => {
+//     list.innerHTML += '<li>' + status.name + '</li>'
+// })
 
 
 
@@ -137,7 +154,7 @@ async function fetchRoads() {
         const avrgSpeed = road.fields.mf1_vit
         const numberOfCars = road.fields.mf1_debit
 
-        for (const roadCoordinates of road.fields.geo_shape.coordinates) {    
+        for (const roadCoordinates of road.fields.geo_shape.coordinates) {
             latlngs.push(roadCoordinates.reverse())
         }
 
@@ -152,11 +169,11 @@ async function fetchRoads() {
         }
 
         let polyline = L.polyline(latlngs, { color: mapColor, weight: 2 }).addTo(map)
-    
+
         polyline.bindPopup("<b>Nom du tronçon :</b><br/>" + roadName + "<br/><br/><b>Longueur du tronçon (en m) :</b><br/>" + roadLength
-        + "<br/><br/><b>Vitesse moyenne (en km/h) :</b></br/>" + avrgSpeed + "<br/><br/><b>Débit de voitures :</b></br/>" + numberOfCars)
+            + "<br/><br/><b>Vitesse moyenne (en km/h) :</b></br/>" + avrgSpeed + "<br/><br/><b>Débit de voitures :</b></br/>" + numberOfCars)
     }
-    
+
 }
 
 fetchRoads()
@@ -167,11 +184,11 @@ function startTime() {
     var m = today.getMinutes();
     m = checkTime(m);
     document.getElementById('time').innerHTML =
-    "Heure : "+h + ":" + m;
+        "Heure : " + h + ":" + m;
     var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
     return i;
 }
 
