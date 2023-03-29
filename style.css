@@ -28,11 +28,13 @@ h1 {
     margin: -10px;
     padding-left: 30px;
     padding-top: 20px;
+}
 
+.hide {
+    visibility: hidden;
 }
 
 h2 {
-    visibility: hidden;
     margin-left: 20px;
     margin-bottom: -20px;
 
@@ -40,11 +42,10 @@ h2 {
 
 
 .container {
-    position: absolute;
+    position: relative;
     padding: 8px;
     left: 70%;
     top: 2.5%;
-
 }
 
 input {
@@ -221,8 +222,12 @@ input {
 /* CSS de la carte */
 
 #map {
-    height: 500px;
-    width: 700px;
+    height: 700px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 
 /* CSS de la légende */
@@ -275,7 +280,6 @@ input {
 .leaflet-touch .leaflet-bar a {
     width: 20px;
     height: 20px;
-    font-size: larger;
 }
 
 #time {
