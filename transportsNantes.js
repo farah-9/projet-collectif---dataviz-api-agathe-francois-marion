@@ -39,7 +39,6 @@ async function fetchParkingRelais() {
         Tab = Tab + 1
 
     }
-    setTimeout(fetchParkingRelais, 100000)
 }
 
 //Appel API parkings publics - DATA NANTES METRO
@@ -184,7 +183,7 @@ function startTime() {
     var m = today.getMinutes();
     m = checkTime(m);
     document.getElementById('time').innerHTML =
-        "Heure : " + h + ":" + m;
+        "Il est " + h + "h" + m;
     var t = setTimeout(startTime, 500);
 }
 function checkTime(i) {

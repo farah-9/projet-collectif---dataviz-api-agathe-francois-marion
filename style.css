@@ -1,7 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-
-    background-color: beige;
+    background-color: rgb(255, 255, 255);
     color: rgb(8, 7, 7);
     /* background-image:url(https://i.pinimg.com/564x/73/5d/39/735d3946c29ca7a6b05e7cd891578fe9.jpg);  */
     /* background-size: cover; */
@@ -22,15 +21,20 @@ h1 {
     /* background: gray; */
     padding: 20px 150px 250px 5px;
     color: rgb(254, 255, 253);
-    background-image: url(https://www.northumbria.ac.uk/-/media/images/banners/about-us/campus-services/parking-banner.jpg?modified=20180312135122);
-
-    background-size: 110%;
+    font-size: 70px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255)),
+        url(https://www.northumbria.ac.uk/-/media/images/banners/about-us/campus-services/parking-banner.jpg?modified=20180312135122);
+    background-position: 0%;
     margin: -10px;
+    padding-left: 30px;
+    padding-top: 20px;
 
 }
 
 h2 {
     visibility: hidden;
+    margin-left: 20px;
+    margin-bottom: -20px;
 
 }
 
@@ -51,9 +55,10 @@ input {
     padding: 0 100 px;
     color: rgb(44, 41, 41);
     border-radius: 50px;
-    font-size: 20px;
+    font-size: 15px;
     border: 1px solid black;
     background: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -64,6 +69,7 @@ input {
     grid-template-rows: repeat(2, 0fr);
     grid-column-gap: 70px;
     grid-row-gap: 50px;
+    margin-left: 20px;
 
 
 }
@@ -273,14 +279,7 @@ input {
 }
 
 #time {
-    font-size: 50px;
-    font-family: 'Merriweather';
-    font-size: 30px;
-    font-weight: 500;
-    color: #572a2a;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    color: #000000;
 }
