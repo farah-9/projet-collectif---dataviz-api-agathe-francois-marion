@@ -2,23 +2,11 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: rgb(255, 255, 255);
     color: rgb(8, 7, 7);
-    /* background-image:url(https://i.pinimg.com/564x/73/5d/39/735d3946c29ca7a6b05e7cd891578fe9.jpg);  */
-    /* background-size: cover; */
-
+    cursor: url("vroum.cur"), auto;
 }
-
-/* .sous{
-    display: none;
-    box-shadow: 0px 1px 2px #ccc;
-    background-color: white;
-}
-nav > ul li :hover .sous{
-    display: block;
-} */
 
 h1 {
     font-family: 'Arimo', sans-serif;
-    /* background: gray; */
     padding: 20px 150px 250px 5px;
     color: rgb(254, 255, 253);
     font-size: 70px;
@@ -66,7 +54,6 @@ input {
 
 .parking {
     display: grid;
-    /* grid-template-columns: repeat(6, 1fr); */
     grid-template-rows: repeat(2, 0fr);
     grid-column-gap: 70px;
     grid-row-gap: 50px;
